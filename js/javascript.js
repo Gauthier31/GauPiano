@@ -38,6 +38,7 @@ document.addEventListener('keydown', (event) => {
 
             if (find >= 0) {
                 document.getElementById(BD[find][1]).classList.add("press");
+                playSound(BD[find][2]);
             }
     }
 
@@ -181,61 +182,51 @@ function generated() {
             `
         <div class="octave">
             <div class="row mix">
-                <div id="DO#REb` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="DO#_` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>Z</p>
                         </div>
-                        <p>DO
-                            <br />#
-                            <br />REb
+                        <p>DO#
                         </p>
                     </div>
                 </div>
-                <div id="RE#MIb` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="RE#_` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>E</p>
                         </div>
-                        <p>RE
-                            <br />#
-                            <br />MIb
+                        <p>RE#
                         </p>
                     </div>
                 </div>
 
                 <div class="TN-NULL"></div>
 
-                <div id="FA#SOLb` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="FA#_` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>T</p>
                         </div>
-                        <p>FA
-                            <br />#
-                            <br />SOLb
+                        <p>FA#
                         </p>
                     </div>
                 </div>
-                <div id="SOL#LAb` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="SOL#_` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>Y</p>
                         </div>
-                        <p>SOL
-                            <br />#
-                            <br />LAb
+                        <p>SOL#
                         </p>
                     </div>
                 </div>
-                <div id="LA#SIb` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="LA#_` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>U</p>
                         </div>
-                        <p>LA
-                            <br />#
-                            <br />SIb
+                        <p>LA#
                         </p>
                     </div>
                 </div>
@@ -244,7 +235,7 @@ function generated() {
             </div>
 
             <div class="row">
-                <div id="DO` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="DO_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>Q</p>
@@ -252,7 +243,7 @@ function generated() {
                         <p>DO</p>
                     </div>
                 </div>
-                <div id="RE` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="RE_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>S</p>
@@ -260,7 +251,7 @@ function generated() {
                         <p>RE</p>
                     </div>
                 </div>
-                <div id="MI` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="MI_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>D</p>
@@ -268,7 +259,7 @@ function generated() {
                         <p>MI</p>
                     </div>
                 </div>
-                <div id="FA` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="FA_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>F</p>
@@ -276,7 +267,7 @@ function generated() {
                         <p>FA</p>
                     </div>
                 </div>
-                <div id="SOL` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="SOL_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>G</p>
@@ -284,7 +275,7 @@ function generated() {
                         <p>SOL</p>
                     </div>
                 </div>
-                <div id="LA` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="LA_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>H</p>
@@ -292,7 +283,7 @@ function generated() {
                         <p>LA</p>
                     </div>
                 </div>
-                <div id="SI` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
+                <div id="SI_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
                     <div class="info">
                         <div class="lettre">
                             <p>J</p>
@@ -306,4 +297,16 @@ function generated() {
         </div>
         `;
     }
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+function playSound(audioElement) {
+    //console.log(audioElement)
+
+    audioElement.pause();
+    audioElement.currentTime = 0;
+    audioElement.play();
 }
