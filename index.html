@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0, user-scalable=no" />
+
+    <title>GauPiano</title>
+
+    <link href="style/Style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="piano">
+    </div>
+
+
+    <div class="boutons">
+        <div class="btnFleche" onclick="flecheGauche()">
+            <p>←</p>
+        </div>
+        <div class="btnSoustraction btnNull" onclick="btnSoustraction()">
+            <p>-</p>
+        </div>
+
+        <div>
+            <p id="numSec"></p>
+        </div>
+
+        <div class="btnAjout" onclick="btnAjout()">
+            <p>+</p>
+        </div>
+        <div class="btnFleche" onclick="flecheDroite()">
+            <p>→</p>
+        </div>
+    </div>
+
+    <div class="explication">
+        Appuyer sur la touche <span>Shift</span> pour afficher les lettres associées au touches du piano
+        <br />
+        <br />
+        Pour changer la fréquence déplacez vous avec les flèches <span>←</span> ou <span>→</span>
+    </div>
+
+
+    <script src="js/javascript.js"></script>
+    <script src="js/BD.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+body {
+    height: 100svh;
+    width: 100svw;
+    margin: 0;
+    display: grid;
+    cursor: grab;
+}
+
+.row {
+    display: flex;
+}
+
+.mix {
+    position: absolute;
+    margin-left: 15px;
+}
+
+#piano {
+    margin: auto;
+    cursor: pointer;
+    display: flex;
+    height: 400px;
+}
+
+.TB {
+    height: 400px;
+    width: 50px;
+    background-color: white;
+    border: black solid 1px;
+    box-shadow: 0px 10px 0px -1px rgb(230, 230, 230);
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    text-align: center;
+}
+
+.TB .info,
+.TN .info {
+    align-self: flex-end;
+}
+
+.TN {
+    height: 200px;
+    width: 30px;
+    margin-left: 21.5px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 0.6rem;
+}
+
+.TN-NULL {
+    height: 200px;
+    width: 25px;
+    margin-left: 26.5px;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.press {
+    box-shadow: 0px 0px 0px -1px;
+    margin-top: 10px;
+}
+
+.lettre {
+    background-color: rgba(128, 128, 128, 0.5);
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    border-radius: 5px;
+    display: none;
+}
+
+.lettreAffiche {
+    display: flex;
+}
+
+.lettre p {
+    margin: auto;
+    font-size: 0.6rem;
+}
+
+
+.boutons {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.btnFleche,
+.btnAjout,
+.btnSoustraction {
+    background-color: rgba(128, 128, 128, 0.5);
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    display: flex;
+}
+
+.btnNull {
+    visibility: hidden;
+}
+
+.btnFleche p,
+.btnAjout p,
+.btnSoustraction p {
+    margin: auto;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+
+
+.explication {
+    text-align: center;
+}
+
+span {
+    background-color: rgba(128, 128, 128, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.numSection p {
+    width: 100%;
+    text-align: center;
+}
+
+.numSection {
+    border-left: dashed black;
+    border-right: dashed black;
+    height: 20px;
+}
