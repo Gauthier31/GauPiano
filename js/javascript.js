@@ -4,16 +4,24 @@ document.getElementById("numSec").innerHTML = numSec
 
 var nbPiano = 1
 var maxNbPiano = 3
-generated()
 
+var enregistrement = document.getElementById("enregistrement")
+var next = true
+
+var parametreBool = true;
+
+// AZERTY par defaut
+var clavier = 0
+
+generated()
 afficheSection()
 
 
 document.addEventListener('keydown', (event) => {
-    var name = event.key
+    var name = event.code;
 
     switch (name) {
-        case 'Shift':
+        case 'ShiftLeft':
             afficherLettre();
             break;
 
@@ -25,11 +33,11 @@ document.addEventListener('keydown', (event) => {
             flecheDroite()
             break;
 
-        case '+':
+        case 'ArrowUp':
             btnAjout()
             break;
 
-        case '-':
+        case 'ArrowDown':
             btnSoustraction()
             break;
 
@@ -37,18 +45,22 @@ document.addEventListener('keydown', (event) => {
             find = search(name)
 
             if (find >= 0) {
-                document.getElementById(BD[find][1]).classList.add("press");
-                playSound(BD[find][2]);
+                document.getElementById(TOUCHES[find][2]).classList.add("press");
+                if (next) {
+                    next = false
+                    playSound(TOUCHES[find][3]);
+                    addEnregistrement(TOUCHES[find][2])
+                }
             }
     }
 
 }, false);
 
 document.addEventListener('keyup', (event) => {
-    var name = event.key
+    var name = event.code
 
     switch (name) {
-        case 'Shift':
+        case 'ShiftLeft':
             cacheLettre();
             break;
 
@@ -56,7 +68,9 @@ document.addEventListener('keyup', (event) => {
             find = search(name)
 
             if (find >= 0) {
-                document.getElementById(BD[find][1]).classList.remove("press");
+                document.getElementById(TOUCHES[find][2]).classList.remove("press");
+                stopSound(TOUCHES[find][3])
+                next = true;
             }
     }
 
@@ -74,8 +88,8 @@ function search(key) {
 
     find = -1
 
-    for (i = 0; i < BD.length; i++) {
-        if (BD[i][0].includes(key.toUpperCase())) {
+    for (i = 0; i < TOUCHES.length && find == -1; i++) {
+        if (TOUCHES[i].includes(key)) {
             find = i
         }
     }
@@ -174,129 +188,64 @@ function afficheSection() {
 
 function generated() {
 
-    piano = document.getElementById("piano");
-    piano.innerHTML = ""
+    piano = "";
 
     for (var i = 1; i <= nbPiano; i++) {
-        piano.innerHTML +=
-            `
+
+        piano += `
         <div class="octave">
-            <div class="row mix">
-                <div id="DO#_` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>Z</p>
-                        </div>
-                        <p>DO#
-                        </p>
-                    </div>
-                </div>
-                <div id="RE#_` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>E</p>
-                        </div>
-                        <p>RE#
-                        </p>
-                    </div>
-                </div>
+                <div class="row mix">`;
 
-                <div class="TN-NULL"></div>
+        for (var j = 0; j < 7; j++) {
 
-                <div id="FA#_` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>T</p>
-                        </div>
-                        <p>FA#
-                        </p>
-                    </div>
-                </div>
-                <div id="SOL#_` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>Y</p>
-                        </div>
-                        <p>SOL#
-                        </p>
-                    </div>
-                </div>
-                <div id="LA#_` + i + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>U</p>
-                        </div>
-                        <p>LA#
-                        </p>
-                    </div>
-                </div>
+            indice = (i - 1) * 14 + j;
 
-                <div class="TN-NULL"></div>
-            </div>
+            if (TOUCHES[indice][2] == "") {
+                piano += `<div class="TN-NULL"></div>`
+            } else {
+                piano += `
+                    <div id="` + TOUCHES[indice][2] + `" class="TN" onmousedown="press(this)" onmouseup="dePress(this)">
+                        <div class="info">
+                            <div class="lettre">
+                                <p>` + TOUCHES[indice][1][clavier] + `</p>
+                            </div>
+                            <p class="note">` + TOUCHES[indice][2].slice(0, TOUCHES[indice][2].length - 2) + `</p>
+                        </div>
+                    </div>`;
+            }
+        }
 
-            <div class="row">
-                <div id="DO_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>Q</p>
-                        </div>
-                        <p>DO</p>
-                    </div>
-                </div>
-                <div id="RE_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>S</p>
-                        </div>
-                        <p>RE</p>
-                    </div>
-                </div>
-                <div id="MI_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>D</p>
-                        </div>
-                        <p>MI</p>
-                    </div>
-                </div>
-                <div id="FA_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>F</p>
-                        </div>
-                        <p>FA</p>
-                    </div>
-                </div>
-                <div id="SOL_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>G</p>
-                        </div>
-                        <p>SOL</p>
-                    </div>
-                </div>
-                <div id="LA_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>H</p>
-                        </div>
-                        <p>LA</p>
-                    </div>
-                </div>
-                <div id="SI_` + i + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
-                    <div class="info">
-                        <div class="lettre">
-                            <p>J</p>
-                        </div>
-                        <p>SI</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="numSection"><p>` + (numSec + i - 1) + `</p></div>
+        piano += `
         </div>
+
+        <div class="row">
         `;
+
+        for (j; j < 14; j++) {
+
+            indice = (i - 1) * 14 + j;
+
+            piano += `
+                <div id="` + TOUCHES[indice][2] + `" class="TB" onmousedown="press(this)" onmouseup="dePress(this)">
+                    <div class="info">
+                        <div class="lettre">
+                            <p>` + TOUCHES[indice][1][clavier] + `</p>
+                        </div>
+                        <p>` + TOUCHES[indice][2] + `</p>
+                    </div>
+                </div>`;
+        }
+
+        piano +=
+            `</div>
+            
+            <div class="numSection">
+                <p>` + (numSec + i - 1) + `</p>
+            </div>
+        </div>`;
     }
+
+    document.getElementById("piano").innerHTML = piano;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -306,7 +255,39 @@ function generated() {
 function playSound(audioElement) {
     console.log(audioElement.src)
 
+    audioElement.play();
+}
+
+function stopSound(audioElement) {
+    //console.log(audioElement)
+
     audioElement.pause();
     audioElement.currentTime = 0;
-    audioElement.play();
+}
+
+function addEnregistrement(txt) {
+    if (enregistrement.innerHTML !== "") {
+        enregistrement.innerHTML += " + ";
+    }
+    enregistrement.innerHTML += "<span>" + txt.slice(0, txt.length - 2); + "</span>";
+}
+
+
+function resetEnregistrement() {
+    enregistrement.innerHTML = "";
+}
+
+function parametre(obj) {
+
+    parametreBloc = document.getElementById("parametre")
+
+    if (parametreBool) {
+        parametreBool = false;
+        parametreBloc.style.height = "0px"
+        obj.classList.value = obj.classList.value.replace("up", "down")
+    } else {
+        parametreBool = true;
+        parametreBloc.style.height = "150px"
+        obj.classList.value = obj.classList.value.replace("down", "up")
+    }
 }

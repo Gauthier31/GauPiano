@@ -9,44 +9,58 @@
 
     <link href="style/Style.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
 
-    <div id="piano">
+    <div class="row jc-center" id="piano">
     </div>
 
+    <i onclick="parametre(this)" class="fa fa-chevron-up"></i>
+    <div id="parametre">
 
-    <div class="boutons">
-        <div class="btnFleche" onclick="flecheGauche()">
-            <p>←</p>
-        </div>
-        <div class="btnSoustraction btnNull" onclick="btnSoustraction()">
-            <p>-</p>
+        <div class="row jc-center boutons">
+            <div class="btnFleche" onclick="flecheGauche()">
+                <p>←</p>
+            </div>
+            <div class="btnSoustraction btnNull" onclick="btnSoustraction()">
+                <p>-</p>
+            </div>
+
+            <div>
+                <p id="numSec"></p>
+            </div>
+
+            <div class="btnAjout" onclick="btnAjout()">
+                <p>+</p>
+            </div>
+            <div class="btnFleche" onclick="flecheDroite()">
+                <p>→</p>
+            </div>
         </div>
 
+        <div class="row jc-center explication">
+            <div>
+                Appuyer sur la touche <span>Shift</span> pour afficher les lettres associées aux touches du piano
+                <br />
+                Pour changer l'octave déplacez vous avec les flèches <span>←</span> ou <span>→</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row jc-center">
         <div>
-            <p id="numSec"></p>
-        </div>
-
-        <div class="btnAjout" onclick="btnAjout()">
-            <p>+</p>
-        </div>
-        <div class="btnFleche" onclick="flecheDroite()">
-            <p>→</p>
+            <span onclick="resetEnregistrement()">Reset</span>
         </div>
     </div>
 
-    <div class="explication">
-        Appuyer sur la touche <span>Shift</span> pour afficher les lettres associées au touches du piano
-        <br />
-        <br />
-        Pour changer la fréquence déplacez vous avec les flèches <span>←</span> ou <span>→</span>
-    </div>
+    <div class="" id="enregistrement"></div>
 
 
-    <script src="js/javascript.js"></script>
     <script src="js/BD.js"></script>
+    <script src="js/javascript.js"></script>
 </body>
 
 </html>
