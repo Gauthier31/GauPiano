@@ -2,12 +2,15 @@ body {
     height: 100svh;
     width: 100svw;
     margin: 0;
-    display: grid;
     cursor: grab;
 }
 
 .row {
     display: flex;
+}
+
+.jc-center {
+    justify-content: center;
 }
 
 .mix {
@@ -19,7 +22,7 @@ body {
     margin: auto;
     cursor: pointer;
     display: flex;
-    height: 400px;
+    padding-top: 20px;
 }
 
 .TB {
@@ -30,6 +33,7 @@ body {
     box-shadow: 0px 10px 0px -1px rgb(230, 230, 230);
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 p {
@@ -39,6 +43,7 @@ p {
 .TB .info,
 .TN .info {
     align-self: flex-end;
+    width: 100%;
 }
 
 .TN {
@@ -50,6 +55,7 @@ p {
     justify-content: center;
     color: white;
     font-size: 0.6rem;
+    box-shadow: -10px 0px 0px -1px rgb(230, 230, 230);
 }
 
 .TN-NULL {
@@ -62,9 +68,16 @@ p {
     color: white;
 }
 
-.press {
+.TB.press {
     box-shadow: 0px 0px 0px -1px;
     margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.TN.press {
+    box-shadow: -10px 0px 0px -1px rgb(230, 230, 230);
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 
 .lettre {
@@ -85,18 +98,29 @@ p {
     font-size: 0.6rem;
 }
 
+.note {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    margin-top: 1em;
+    padding: 0.5rem 0;
+    background-color: #303030;
+}
+
 
 .boutons {
-    margin: auto;
+    margin: 10px auto;
     display: flex;
     justify-content: space-between;
+    height: 50px;
     width: 300px;
 }
 
 .btnFleche,
 .btnAjout,
 .btnSoustraction {
-    background-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(20, 20, 20);
+    color: white;
     height: 50px;
     width: 50px;
     border-radius: 25px;
@@ -113,27 +137,52 @@ p {
     margin: auto;
     font-weight: bold;
     font-size: 2rem;
+    line-height: 50px;
 }
 
 
 
 .explication {
     text-align: center;
+    margin: 10px 0;
+}
+
+.explication>div {
+    line-height: 30px;
 }
 
 span {
-    background-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(20, 20, 20);
+    color: white;
     padding: 5px 10px;
     border-radius: 5px;
-}
-
-.numSection p {
-    width: 100%;
-    text-align: center;
 }
 
 .numSection {
     border-left: dashed black;
     border-right: dashed black;
-    height: 20px;
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.numSection p {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+#enregistrement {
+    line-height: 40px;
+    padding: 0 60px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#parametre {
+    height: 150px;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+    border: 1px solid black;
+    margin-bottom: 15px;
 }
