@@ -1,16 +1,16 @@
-const DO_1 = new Audio('son/DO_1.mp3');
-const RE_1 = new Audio('son/RE_1.mp3');
-const MI_1 = new Audio('son/MI_1.mp3');
-const FA_1 = new Audio('son/FA_1.mp3');
-const SOL_1 = new Audio('son/SOL_1.mp3');
-const LA_1 = new Audio('son/LA_1.mp3');
-const SI_1 = new Audio('son/SI_1.mp3');
+const DO_1 = new Howl({ src: ['son/DO_1.mp3'] });
+const RE_1 = new Howl({ src: ['son/RE_1.mp3'] });
+const MI_1 = new Howl({ src: ['son/MI_1.mp3'] });
+const FA_1 = new Howl({ src: ['son/FA_1.mp3'] });
+const SOL_1 = new Howl({ src: ['son/SOL_1.mp3'] });
+const LA_1 = new Howl({ src: ['son/LA_1.mp3'] });
+const SI_1 = new Howl({ src: ['son/SI_1.mp3'] });
 
-const DO__1 = new Audio('son/DO__1.mp3')
-const RE__1 = new Audio('son/RE__1.mp3');
-const FA__1 = new Audio('son/FA__1.mp3');
-const SOL__1 = new Audio('son/SOL__1.mp3');
-const LA__1 = new Audio('son/LA__1.mp3');
+const DO__1 = new Howl({ src: ['son/DO__1.mp3'] });
+const RE__1 = new Howl({ src: ['son/RE__1.mp3'] });
+const FA__1 = new Howl({ src: ['son/FA__1.mp3'] });
+const SOL__1 = new Howl({ src: ['son/SOL__1.mp3'] });
+const LA__1 = new Howl({ src: ['son/LA__1.mp3'] });
 
 
 
