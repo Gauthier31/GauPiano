@@ -304,7 +304,7 @@ function generated() {
 ////////////////////////////////////////////////////////////////////////////////////
 
 function playSound(audioElement) {
-    //console.log(audioElement)
+    console.log(audioElement.src)
 
     audioElement.pause();
     audioElement.currentTime = 0;
