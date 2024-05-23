@@ -69,7 +69,9 @@ document.addEventListener('keyup', (event) => {
 
             if (find >= 0) {
                 document.getElementById(TOUCHES[find][2]).classList.remove("press");
-                stopSound(SONS[find])
+                if (!document.getElementById("pedale").checked) {
+                    stopSound(TOUCHES[find][3])
+                }
                 next = true;
             }
     }
@@ -275,8 +277,6 @@ function generated() {
 ////////////////////////////////////////////////////////////////////////////////////
 
 function playSound(audioElement) {
-    //console.log(audioElement)
-
     audioElement.play();
 }
 
@@ -309,7 +309,7 @@ function parametre(obj) {
         obj.classList.value = obj.classList.value.replace("up", "down")
     } else {
         parametreBool = true;
-        parametreBloc.style.height = "150px"
+        parametreBloc.style.height = "170px"
         obj.classList.value = obj.classList.value.replace("down", "up")
     }
 }

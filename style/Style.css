@@ -180,7 +180,7 @@ span {
 }
 
 #parametre {
-    height: 150px;
+    height: 170px;
     overflow: hidden;
     transition: height 0.5s ease-in-out;
     border: 1px solid black;
