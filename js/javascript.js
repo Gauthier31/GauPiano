@@ -42,13 +42,13 @@ document.addEventListener('keydown', (event) => {
             break;
 
         default:
-            find = search(name)
+            find = searchByTouche(name)
 
             if (find >= 0) {
                 document.getElementById(TOUCHES[find][2]).classList.add("press");
                 if (next) {
                     next = false
-                    playSound(TOUCHES[find][3]);
+                    playSound(SONS[find]);
                     addEnregistrement(TOUCHES[find][2])
                 }
             }
@@ -65,11 +65,11 @@ document.addEventListener('keyup', (event) => {
             break;
 
         default:
-            find = search(name)
+            find = searchByTouche(name)
 
             if (find >= 0) {
                 document.getElementById(TOUCHES[find][2]).classList.remove("press");
-                stopSound(TOUCHES[find][3])
+                stopSound(SONS[find])
                 next = true;
             }
     }
@@ -78,22 +78,44 @@ document.addEventListener('keyup', (event) => {
 
 function press(t) {
     t.classList.add("press")
+
+    if (next) {
+        next = false
+        find = searchBySon(t.id)
+        playSound(SONS[find]);
+        addEnregistrement(TOUCHES[find][2])
+    }
 }
 
 function dePress(t) {
     t.classList.remove("press")
+
+    find = searchBySon(t.id)
+    stopSound(SONS[find])
+    next = true;
 }
 
-function search(key) {
+function searchByTouche(key) {
 
     find = -1
 
     for (i = 0; i < TOUCHES.length && find == -1; i++) {
-        if (TOUCHES[i].includes(key)) {
+        if (TOUCHES[i][0] == key) {
             find = i
         }
     }
+    return find
+}
 
+function searchBySon(key) {
+
+    find = -1
+
+    for (i = 0; i < TOUCHES.length && find == -1; i++) {
+        if (TOUCHES[i][2] == key) {
+            find = i
+        }
+    }
     return find
 }
 
